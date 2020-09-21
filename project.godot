@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Jelly Bounce"
+config/name="Project Kandil"
 config/icon="res://icon.png"
 
 [rendering]
