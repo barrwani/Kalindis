@@ -11,6 +11,7 @@ Developed by Nahar Entertainment. In Project Kandil, you play as a cheerful jell
 
 For detailed information on changes between versions please read the [Changelog](CHANGELOG.md)
 
+
 ### Contributors 
 ---
 
