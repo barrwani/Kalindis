@@ -5,6 +5,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+[0.0.2] - Sept 22, 2020
+---
+
+**Added:**
+
+-Placeholder Assets 
+
+-Joystick Motion
+
+-Basic Player Movement + FSM
+
+-Star Mechanic
+
+-Rising Tide Mechanic
+
+
 [0.0.1] - Sept 21, 2020
 ---
 
