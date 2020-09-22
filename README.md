@@ -9,6 +9,8 @@ Developed by Nahar Entertainment. In Project Kandil, you play as a cheerful jell
 
 -Version [0.0.1] - Sept 21, 2020
 
+-Version [0.0.2] - Sept 22, 2020
+
 For detailed information on changes between versions please read the [Changelog](CHANGELOG.md)
 
 
