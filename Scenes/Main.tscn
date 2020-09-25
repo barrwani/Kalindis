@@ -12,19 +12,19 @@
 [ext_resource path="res://Scripts/Tide.gd" type="Script" id=10]
 [ext_resource path="res://UI/tide.png" type="Texture" id=11]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 298.675, 25.993 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 33.7347, 3302.91 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 382.525, 16.4985 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2421.77, 412.011 )
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=5]
 radius = 40.0
 
 [node name="Node2D" type="Node2D"]
@@ -44,7 +44,7 @@ position = Vector2( 277.647, 989.116 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2( 23.5452, 1.68182 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="backbar" type="Sprite" parent="Floor"]
 modulate = Color( 0.823529, 0.72549, 1, 1 )
@@ -66,7 +66,7 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LWall"]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="RWall" type="Area2D" parent="." groups=[
 "water",
@@ -82,7 +82,7 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RWall"]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Stars" type="Node2D" parent="."]
 
@@ -115,15 +115,15 @@ position = Vector2( 19.0538, -505.258 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tide/StartThreshold"]
 visible = false
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tide"]
 visible = false
 position = Vector2( 4.48975, 341.229 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="tide" type="Sprite" parent="Tide"]
-modulate = Color( 0.141176, 0.317647, 0.427451, 0.517647 )
+modulate = Color( 1, 1, 1, 0.517647 )
 position = Vector2( 8.84344, 341.648 )
 scale = Vector2( 3.01517, 1 )
 texture = ExtResource( 11 )
@@ -154,13 +154,14 @@ texture = ExtResource( 2 )
 [node name="joystickbutton" type="TouchScreenButton" parent="UI/Joystick/joystick"]
 normal = ExtResource( 3 )
 pressed = ExtResource( 4 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 shape_visible = false
 script = ExtResource( 5 )
 [connection signal="body_entered" from="LWall" to="LWall" method="_on_LWaterfall_body_entered"]
 [connection signal="playerinwfall" from="LWall" to="Player" method="_on_Waterfall_playerinwfall"]
 [connection signal="body_entered" from="RWall" to="RWall" method="_on_RWaterfall_body_entered"]
 [connection signal="playerinwfall" from="RWall" to="Player" method="_on_Waterfall_playerinwfall"]
+[connection signal="starcollected" from="Stars/Star7" to="Player" method="_on_Star_starcollected"]
 [connection signal="starcollected" from="Stars/Star6" to="Player" method="_on_Star_starcollected"]
 [connection signal="starcollected" from="Stars/Star5" to="Player" method="_on_Star_starcollected"]
 [connection signal="starcollected" from="Stars/Star4" to="Player" method="_on_Star_starcollected"]
@@ -171,4 +172,5 @@ script = ExtResource( 5 )
 [connection signal="playerinwfall" from="Tide" to="Player" method="_on_Tide_playerinwfall"]
 [connection signal="body_entered" from="Tide/StartThreshold" to="Tide" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Tide/Timer" to="Tide" method="_on_Timer_timeout"]
+[connection signal="pressed" from="UI/Joystick/joystick/joystickbutton" to="Player" method="_on_joystickbutton_pressed"]
 [connection signal="released" from="UI/Joystick/joystick/joystickbutton" to="Player" method="_on_joystickbutton_released"]
