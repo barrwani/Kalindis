@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/analog_base.png" type="Texture" id=2]
@@ -6,20 +6,22 @@
 [ext_resource path="res://UI/analog_button_pressed.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/joystickbutton.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Waterfall.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Star.tscn" type="PackedScene" id=7]
 [ext_resource path="res://backbar.png" type="Texture" id=8]
 [ext_resource path="res://UI/backg.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Tide.gd" type="Script" id=10]
 [ext_resource path="res://UI/tide.png" type="Texture" id=11]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 298.675, 25.993 )
+[ext_resource path="res://Scenes/Star.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/StickyWall.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scripts/Walls.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 33.7347, 3302.91 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 382.525, 16.4985 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 298.675, 25.993 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2421.77, 412.011 )
@@ -27,84 +29,76 @@ extents = Vector2( 2421.77, 412.011 )
 [sub_resource type="CircleShape2D" id=5]
 radius = 40.0
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
 
-[node name="backg" type="Sprite" parent="."]
-position = Vector2( 320.282, -511.355 )
-scale = Vector2( 1.08027, 3.38437 )
+[node name="DuplicateThresh" type="Area2D" parent="."]
+position = Vector2( 302.04, 172.759 )
+script = ExtResource( 14 )
+
+[node name="backg" type="Sprite" parent="DuplicateThresh"]
+position = Vector2( 18.242, -415.748 )
+scale = Vector2( 1.08027, 3.83165 )
 texture = ExtResource( 9 )
+
+[node name="LWall" type="Area2D" parent="DuplicateThresh" groups=[
+"object",
+"water",
+]]
+position = Vector2( -336.746, 500 )
+script = ExtResource( 6 )
+
+[node name="backbar2" type="Sprite" parent="DuplicateThresh/LWall"]
+modulate = Color( 0.823529, 0.72549, 1, 1 )
+position = Vector2( -37.2942, -691.094 )
+scale = Vector2( 0.0502776, 20.2972 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuplicateThresh/LWall"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="RWall" type="Area2D" parent="DuplicateThresh" groups=[
+"object",
+"water",
+]]
+position = Vector2( 333.344, 502.67 )
+script = ExtResource( 6 )
+
+[node name="backbar3" type="Sprite" parent="DuplicateThresh/RWall"]
+modulate = Color( 0.823529, 0.72549, 1, 1 )
+position = Vector2( 39.5469, -710.457 )
+scale = Vector2( 0.0524035, 20.0545 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuplicateThresh/RWall"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="StickyWall" parent="DuplicateThresh" groups=[
+"object",
+] instance=ExtResource( 13 )]
+position = Vector2( 223.96, 288.241 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuplicateThresh"]
+shape = SubResource( 1 )
 
 [node name="Player" parent="." groups=[
 "player",
 ] instance=ExtResource( 1 )]
-position = Vector2( 300, 894.572 )
+position = Vector2( 296, 896 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 277.647, 989.116 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2( 23.5452, 1.68182 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="backbar" type="Sprite" parent="Floor"]
 modulate = Color( 0.823529, 0.72549, 1, 1 )
 position = Vector2( 22.9213, 246.659 )
 scale = Vector2( 0.169332, 2.16735 )
 texture = ExtResource( 8 )
-
-[node name="LWall" type="Area2D" parent="." groups=[
-"water",
-]]
-position = Vector2( -34.7058, 672.759 )
-script = ExtResource( 6 )
-
-[node name="backbar2" type="Sprite" parent="LWall"]
-modulate = Color( 0.823529, 0.72549, 1, 1 )
-position = Vector2( -37.4417, -1234.27 )
-scale = Vector2( 0.0502776, 16.0982 )
-texture = ExtResource( 8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LWall"]
-visible = false
-shape = SubResource( 2 )
-
-[node name="RWall" type="Area2D" parent="." groups=[
-"water",
-]]
-position = Vector2( 635.384, 675.429 )
-script = ExtResource( 6 )
-
-[node name="backbar3" type="Sprite" parent="RWall"]
-modulate = Color( 0.823529, 0.72549, 1, 1 )
-position = Vector2( 39.5469, -1229.06 )
-scale = Vector2( 0.0524035, 16.0343 )
-texture = ExtResource( 8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RWall"]
-visible = false
-shape = SubResource( 2 )
-
-[node name="Stars" type="Node2D" parent="."]
-
-[node name="Star7" parent="Stars" instance=ExtResource( 7 )]
-position = Vector2( 283.069, -924.536 )
-
-[node name="Star6" parent="Stars" instance=ExtResource( 7 )]
-position = Vector2( 518.005, -889.613 )
-
-[node name="Star5" parent="Stars" instance=ExtResource( 7 )]
-position = Vector2( 194.175, -607.056 )
-
-[node name="Star4" parent="Stars" instance=ExtResource( 7 )]
-position = Vector2( 321.167, -299.1 )
-
-[node name="Star3" parent="Stars" instance=ExtResource( 7 )]
-position = Vector2( 327.516, 158.072 )
-
-[node name="Star2" parent="Stars" instance=ExtResource( 7 )]
-position = Vector2( 568.801, 488.251 )
-
-[node name="Star" parent="Stars" instance=ExtResource( 7 )]
 
 [node name="Tide" type="Area2D" parent="."]
 position = Vector2( 282.986, 1300 )
@@ -115,22 +109,24 @@ position = Vector2( 19.0538, -505.258 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tide/StartThreshold"]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tide"]
 visible = false
 position = Vector2( 4.48975, 341.229 )
 shape = SubResource( 4 )
 
-[node name="tide" type="Sprite" parent="Tide"]
-modulate = Color( 1, 1, 1, 0.517647 )
-position = Vector2( 8.84344, 341.648 )
-scale = Vector2( 3.01517, 1 )
-texture = ExtResource( 11 )
-
 [node name="Timer" type="Timer" parent="Tide"]
 wait_time = 0.005
 one_shot = true
+
+[node name="tide" type="Sprite" parent="Tide"]
+modulate = Color( 0, 0.196078, 0.713726, 0.517647 )
+position = Vector2( 5.01401, 1223 )
+scale = Vector2( 3.01517, 3.15366 )
+texture = ExtResource( 11 )
+
+[node name="Timer2" type="Timer" parent="Tide"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -139,10 +135,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -91.0
-margin_right = 20.0
-margin_bottom = -51.0
+margin_left = -12.0
+margin_top = -88.0
+margin_right = 28.0
+margin_bottom = -48.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -157,20 +153,26 @@ pressed = ExtResource( 4 )
 shape = SubResource( 5 )
 shape_visible = false
 script = ExtResource( 5 )
-[connection signal="body_entered" from="LWall" to="LWall" method="_on_LWaterfall_body_entered"]
-[connection signal="playerinwfall" from="LWall" to="Player" method="_on_Waterfall_playerinwfall"]
-[connection signal="body_entered" from="RWall" to="RWall" method="_on_RWaterfall_body_entered"]
-[connection signal="playerinwfall" from="RWall" to="Player" method="_on_Waterfall_playerinwfall"]
-[connection signal="starcollected" from="Stars/Star7" to="Player" method="_on_Star_starcollected"]
-[connection signal="starcollected" from="Stars/Star6" to="Player" method="_on_Star_starcollected"]
-[connection signal="starcollected" from="Stars/Star5" to="Player" method="_on_Star_starcollected"]
-[connection signal="starcollected" from="Stars/Star4" to="Player" method="_on_Star_starcollected"]
-[connection signal="starcollected" from="Stars/Star3" to="Player" method="_on_Star_starcollected"]
-[connection signal="starcollected" from="Stars/Star2" to="Player" method="_on_Star_starcollected"]
-[connection signal="starcollected" from="Stars/Star" to="Player" method="_on_Star_starcollected"]
+
+[node name="FirstStars" type="Node2D" parent="."]
+
+[node name="Star" parent="FirstStars" instance=ExtResource( 12 )]
+position = Vector2( 314, 610 )
+
+[node name="Star2" parent="FirstStars" instance=ExtResource( 12 )]
+position = Vector2( 106, 288 )
+
+[node name="Star3" parent="FirstStars" instance=ExtResource( 12 )]
+position = Vector2( 328, -40 )
+[connection signal="body_entered" from="DuplicateThresh" to="DuplicateThresh" method="_on_DuplicateThresh_body_entered"]
+[connection signal="body_entered" from="DuplicateThresh/LWall" to="DuplicateThresh/LWall" method="_on_LWaterfall_body_entered"]
+[connection signal="playerinwfall" from="DuplicateThresh/LWall" to="Player" method="_on_Waterfall_playerinwfall"]
+[connection signal="body_entered" from="DuplicateThresh/RWall" to="DuplicateThresh/RWall" method="_on_RWaterfall_body_entered"]
+[connection signal="playerinwfall" from="DuplicateThresh/RWall" to="Player" method="_on_Waterfall_playerinwfall"]
 [connection signal="body_entered" from="Tide" to="Tide" method="_on_Tide_body_entered"]
 [connection signal="playerinwfall" from="Tide" to="Player" method="_on_Tide_playerinwfall"]
 [connection signal="body_entered" from="Tide/StartThreshold" to="Tide" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Tide/Timer" to="Tide" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Tide/Timer2" to="Tide" method="_on_Timer2_timeout"]
 [connection signal="pressed" from="UI/Joystick/joystick/joystickbutton" to="Player" method="_on_joystickbutton_pressed"]
 [connection signal="released" from="UI/Joystick/joystick/joystickbutton" to="Player" method="_on_joystickbutton_released"]

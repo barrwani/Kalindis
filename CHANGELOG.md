@@ -7,19 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Incomplete]
 ---
 
--Tide Freeze Mechanic
-
 -Speed increase over time
 
--Procedural Generation
-
--Sticky Wall
-
 -Tree Branch
+
+-Score System
 
 -Pause Menu
 
 
+[0.0.4] - Oct 21, 2020
+---
+**Added:**
+
+-Procedural Generation
+
+-Sticky Walls
+
+-Moon Orb (Tide Freezing Mechanic)
+
+
+**Changed:**
+
+-Repositioning Rate of walls + BG increased from every 500 pixels to every 200 pixels
 
 [0.0.3] - Sept 25, 2020
 ---

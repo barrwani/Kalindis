@@ -10,14 +10,14 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63.7368, 64.6452 )
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.976563, 0.624258, 0.624258, 1, 1, 1, 1, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 6 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -25,8 +25,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=4]
-resource_name = "Idle"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("State Machine/AnimatedSprite:modulate")
 tracks/0/interp = 1
@@ -40,8 +39,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "PostJump"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("State Machine/AnimatedSprite:modulate")
 tracks/0/interp = 1
@@ -65,7 +63,7 @@ shape = SubResource( 1 )
 position = Vector2( 3.36365, -6.72717 )
 width = 30.0
 default_color = Color( 0.4, 0.501961, 1, 1 )
-gradient = SubResource( 6 )
+gradient = SubResource( 2 )
 joint_mode = 2
 begin_cap_mode = 1
 end_cap_mode = 2
@@ -79,14 +77,14 @@ margin_left = -25.5147
 margin_top = -118.0
 margin_right = 44.4853
 margin_bottom = -71.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Idle"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="State Machine"]
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -114,8 +112,8 @@ one_shot = true
 wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 4 )
-anims/PostJump = SubResource( 5 )
+anims/Idle = SubResource( 5 )
+anims/PostJump = SubResource( 6 )
 
 [node name="Position2D" type="Position2D" parent="."]
 [connection signal="dead" from="." to="Camera2D" method="_on_Player_dead"]
