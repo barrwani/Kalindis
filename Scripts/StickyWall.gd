@@ -10,5 +10,3 @@ func _on_StickyWall_body_entered(body):
 		emit_signal("playersticky")
 
 
-func _on_Timer_timeout():
-	queue_free()

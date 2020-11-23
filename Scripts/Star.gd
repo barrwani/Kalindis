@@ -8,8 +8,3 @@ func _on_Star_body_entered(body):
 		self.connect("starcollected",get_node("/root/World/Player"),"_on_Star_starcollected")
 		emit_signal("starcollected")
 		queue_free()
-
-
-
-func _on_Timer_timeout():
-	queue_free()

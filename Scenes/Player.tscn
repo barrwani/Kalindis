@@ -1,11 +1,39 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-14.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/PlayerSM.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/ScreenShake.gd" type="Script" id=5]
 [ext_resource path="res://FUTUREX_.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-15.png" type="Texture" id=7]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-18.png" type="Texture" id=8]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-13.png" type="Texture" id=9]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-16.png" type="Texture" id=10]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-17.png" type="Texture" id=11]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-0.png" type="Texture" id=12]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-1.png" type="Texture" id=13]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-2.png" type="Texture" id=14]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-4.png" type="Texture" id=15]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-9.png" type="Texture" id=16]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-7.png" type="Texture" id=17]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-5.png" type="Texture" id=18]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-10.png" type="Texture" id=19]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-3.png" type="Texture" id=20]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-8.png" type="Texture" id=21]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-6.png" type="Texture" id=22]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-11.png" type="Texture" id=23]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-12.png" type="Texture" id=24]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-25.png" type="Texture" id=25]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-27.png" type="Texture" id=26]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-26.png" type="Texture" id=27]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-28.png" type="Texture" id=28]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-23.png" type="Texture" id=29]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-20.png" type="Texture" id=30]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-21.png" type="Texture" id=31]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-19.png" type="Texture" id=32]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-22.png" type="Texture" id=33]
+[ext_resource path="res://Animations/Jellyfish-0/Jellyfish-24.png" type="Texture" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63.7368, 64.6452 )
@@ -19,10 +47,10 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 28 ) ],
 "loop": true,
-"name": "default",
-"speed": 5.0
+"name": "Idle",
+"speed": 30.0
 } ]
 
 [sub_resource type="Animation" id=5]
@@ -84,7 +112,11 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="State Machine"]
+position = Vector2( -1.30783, -1.55254 )
+scale = Vector2( 0.20477, 0.209932 )
 frames = SubResource( 4 )
+animation = "Idle"
+frame = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

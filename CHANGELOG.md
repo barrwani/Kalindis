@@ -7,14 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Incomplete]
 ---
 
--Speed increase over time
+-Visual Implementation
 
--Tree Branch
+-UI Implementation
+
+-Tutorial
+
+-Post-death screen
+
+
+[0.0.5] - November 23, 2020
+---
+**Added:**
+
+-Speed increase over time
 
 -Score System
 
 -Pause Menu
 
+-Rough Player Idle Animation
 
 [0.0.4] - Oct 21, 2020
 ---

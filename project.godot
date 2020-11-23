@@ -21,8 +21,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Kandil"
-run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Scenes/Menu.tscn"
+boot_splash/image="res://Animations/Jellyfish-0/Jellyfish-1.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://Animations/Jellyfish-0/Jellyfish-2.png"
+
+[autoload]
+
+Pause="*res://Scenes/Pause.tscn"
 
 [display]
 
