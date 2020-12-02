@@ -1,14 +1,15 @@
 extends Area2D
 signal playerinwfall()
 var loops = 0.005
-var positionmult = 5
+var positionmult = 7
 func _on_Tide_body_entered(body):
 	if body.is_in_group("player"):
 		emit_signal("playerinwfall")
 
 func _on_Timer_timeout():
 	if fmod(loops, 10) == 0:
-		positionmult +=3
+		positionmult += 10
+		print("tidespeedup")
 	position.y -= positionmult
 	loops +=0.02
 	$Timer.start()

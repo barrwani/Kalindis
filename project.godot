@@ -22,13 +22,14 @@ _global_script_class_icons={
 
 config/name="Project Kandil"
 run/main_scene="res://Scenes/Menu.tscn"
-boot_splash/image="res://Animations/Jellyfish-0/Jellyfish-1.png"
+boot_splash/image="res://Animations/Jellyfish-0/19.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://Animations/Jellyfish-0/Jellyfish-2.png"
+config/icon="res://Animations/Jellyfish-0/19.png"
 
 [autoload]
 
 Pause="*res://Scenes/Pause.tscn"
+EndGameScreen="*res://Scenes/EndGameScreen.tscn"
 
 [display]
 

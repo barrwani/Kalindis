@@ -1,6 +1,6 @@
 extends Node2D
 
-const idle_dur = 2
+const idle_dur = 0.5
 
 export var move_to = Vector2.RIGHT * 1000
 
@@ -27,11 +27,9 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
-		print('collision')
 		move_to = 100
 
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("object"):
-		print('collision')
 		move_to = Vector2.RIGHT * 100

@@ -30,10 +30,12 @@ func _apply_gravity(delta):
 		velocity.y += delta * gravity
 
 func _apply_movement(delta):
+	if EndGameScreen.play:
+		get_tree().reload_current_scene()
 	if holding:
 		line.show()
 		update_trajectory(delta)
-	if ! is_on_floor() and ! dead:
+	if ! is_on_floor() and ! dead and ! sticking:
 		$"State Machine/AnimatedSprite".rotation_degrees = (180/PI) * velocity.angle()  + 90
 
 	#var was_on_floor = is_on_floor()
@@ -69,14 +71,13 @@ func _on_Waterfall_playerinwfall():
 	$DeathTimer.start()
 	
 
-
 func _on_Star_starcollected():
 	jumpvail = true
 	$AnimationPlayer.play("Idle")
 
 
 func _on_DeathTimer_timeout():
-	get_tree().reload_current_scene()
+	EndGameScreen._on_game_over()
 
 
 func _on_Tide_playerinwfall():
@@ -97,5 +98,5 @@ func _on_StickyWall_playersticky():
 func _on_DuplicateThresh_body_entered(body):
 	duplicate += 1
 	if duplicate % 10 == 0:
-		speed -= 100
+		speed -= 50
 	
