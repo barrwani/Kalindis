@@ -11,10 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -UI Implementation
 
+
+[0.0.6] -December 14, 2020
+---
+**Added:**
+
 -Tutorial
 
 -Post-death screen
 
+-High Score system (highscore is saved on user device)
+
+-Settings menu
+
+-Moving Platforms
+
+-Complete Player Idle Animation
+
+-Main Menu Track
+
+-Normal mode track
+
+-Hard mode track
+
+**Changed:**
+
+-Main menu options and availability
+
+-Adjusting Star spawns (will need more adjustment in the future)
 
 [0.0.5] - November 23, 2020
 ---

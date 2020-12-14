@@ -7,6 +7,7 @@ var wallpos = [-280,280]
 var scales = -250
 var stickyrate = 0
 var threshcounter = 0
+
 func _on_DuplicateThresh_body_entered(body):
 	if body.is_in_group("player"):
 		stickyrate +=1
@@ -61,4 +62,3 @@ func spawner():
 
 	if stickyrate == 4:
 		stickyrate = 0
-		

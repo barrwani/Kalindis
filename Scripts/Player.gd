@@ -14,7 +14,7 @@ var dead = false
 var duplicate = 0
 var gravity = 800
 var jumpvail = true
-var max_points = 200
+var max_points = 150
 
 func update_trajectory(delta):
 	line.clear_points()
@@ -98,5 +98,5 @@ func _on_StickyWall_playersticky():
 func _on_DuplicateThresh_body_entered(body):
 	duplicate += 1
 	if duplicate % 10 == 0:
-		speed -= 50
+		speed -= 30
 	

@@ -12,7 +12,7 @@ onready var tween = $MoveTween
 
 func _ready():
 	_init_tween()
-	
+
 func _init_tween():
 	var duration = move_to.length() / 1000.0
 	tween.interpolate_property(self, "follow", Vector2.ZERO, move_to, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,idle_dur)

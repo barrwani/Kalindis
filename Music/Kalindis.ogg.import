@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Kalindis.ogg-9ab0726e0b8784b5442c68fcd54a1870.oggstr"
+
+[deps]
+
+source_file="res://Music/Kalindis.ogg"
+dest_files=[ "res://.import/Kalindis.ogg-9ab0726e0b8784b5442c68fcd54a1870.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

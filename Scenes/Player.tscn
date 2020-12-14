@@ -39,7 +39,8 @@
 extents = Vector2( 63.7368, 64.6452 )
 
 [sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0.976563, 0.624258, 0.624258, 1, 1, 1, 1, 1 )
+offsets = PoolRealArray( 0.022409, 0.0840336, 1 )
+colors = PoolColorArray( 0.58804, 0.470027, 0.730469, 1, 0.833439, 0.624258, 0.976563, 1, 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -89,7 +90,7 @@ shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2( 3.36365, -6.72717 )
-width = 20.0
+width = 15.0
 default_color = Color( 0.4, 0.501961, 1, 1 )
 gradient = SubResource( 2 )
 joint_mode = 2

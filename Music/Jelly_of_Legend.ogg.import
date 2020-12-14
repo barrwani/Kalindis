@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jelly_of_Legend.ogg-4a0d4c562631e4bf4fe654438db485a2.oggstr"
+
+[deps]
+
+source_file="res://Music/Jelly_of_Legend.ogg"
+dest_files=[ "res://.import/Jelly_of_Legend.ogg-4a0d4c562631e4bf4fe654438db485a2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

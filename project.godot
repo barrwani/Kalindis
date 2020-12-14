@@ -30,6 +30,12 @@ config/icon="res://Animations/Jellyfish-0/19.png"
 
 Pause="*res://Scenes/Pause.tscn"
 EndGameScreen="*res://Scenes/EndGameScreen.tscn"
+Game="*res://game.gd"
+Guidedgame="*res://guidedgame.gd"
+JellyofLegend="*res://Scenes/JellyofLegend.tscn"
+Kalindis="*res://Scenes/Kalindis.tscn"
+Settings="*res://Scenes/Settings.tscn"
+SceneChanger="*res://Scenes/SceneChanger.tscn"
 
 [display]
 

@@ -6,7 +6,7 @@
 [ext_resource path="res://UI/analog_base.png" type="Texture" id=4]
 [ext_resource path="res://UI/backg.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Joystick.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/Score.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/GScore.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Waterfall.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Pausebutton.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Tide.gd" type="Script" id=10]
@@ -44,14 +44,14 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 17 )
 
-[node name="World" type="Node2D"]
+[node name="GWorld" type="Node2D"]
 
 [node name="DuplicateThresh" type="Area2D" parent="."]
 position = Vector2( 302.04, 172.759 )
 script = ExtResource( 12 )
 
 [node name="backg" type="Sprite" parent="DuplicateThresh"]
-position = Vector2( 19.96, 3968.24 )
+position = Vector2( 23.96, 3968.24 )
 scale = Vector2( 1.08027, 11.2761 )
 texture = ExtResource( 5 )
 
@@ -177,9 +177,10 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -12.0
-margin_top = -88.0
+margin_top = -207.0
 margin_right = 28.0
-margin_bottom = -48.0
+margin_bottom = -167.0
+rect_scale = Vector2( 1.2, 1.2 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -237,15 +238,15 @@ position = Vector2( 328, -40 )
 ] instance=ExtResource( 14 )]
 position = Vector2( 526, 461 )
 [connection signal="body_entered" from="DuplicateThresh" to="UI/Score" method="_on_DuplicateThresh_body_entered"]
-[connection signal="body_entered" from="DuplicateThresh" to="DuplicateThresh" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh" to="Player" method="_on_DuplicateThresh_body_entered"]
+[connection signal="body_entered" from="DuplicateThresh" to="DuplicateThresh" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh/LWall" to="DuplicateThresh/LWall" method="_on_LWaterfall_body_entered"]
 [connection signal="playerinwfall" from="DuplicateThresh/LWall" to="Player" method="_on_Waterfall_playerinwfall"]
 [connection signal="body_entered" from="DuplicateThresh/RWall" to="DuplicateThresh/RWall" method="_on_RWaterfall_body_entered"]
 [connection signal="playerinwfall" from="DuplicateThresh/RWall" to="Player" method="_on_Waterfall_playerinwfall"]
-[connection signal="dead" from="Player" to="UI/Score" method="_on_Player_dead"]
-[connection signal="dead" from="Player" to="UI/Pause" method="_on_Player_dead"]
 [connection signal="dead" from="Player" to="UI/Joystick" method="_on_Player_dead"]
+[connection signal="dead" from="Player" to="UI/Pause" method="_on_Player_dead"]
+[connection signal="dead" from="Player" to="UI/Score" method="_on_Player_dead"]
 [connection signal="body_entered" from="Tide" to="Tide" method="_on_Tide_body_entered"]
 [connection signal="playerinwfall" from="Tide" to="Player" method="_on_Tide_playerinwfall"]
 [connection signal="body_entered" from="Tide/StartThreshold" to="Tide" method="_on_Area2D_body_entered"]

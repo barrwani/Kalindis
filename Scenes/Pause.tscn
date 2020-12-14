@@ -4,13 +4,13 @@
 [ext_resource path="res://Scripts/Pause.gd" type="Script" id=2]
 [ext_resource path="res://UI/world of water.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 64
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 128
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -24,7 +24,6 @@ script = ExtResource( 2 )
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
 color = Color( 0, 0.482353, 0.690196, 0.415686 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,7 +38,7 @@ margin_left = -80.0
 margin_top = -199.0
 margin_right = 81.0
 margin_bottom = -115.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "PLAY"
 flat = true
 __meta__ = {
@@ -55,7 +54,7 @@ margin_left = -205.0
 margin_top = 94.0
 margin_right = 206.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "EXIT TO MENU"
 flat = true
 __meta__ = {
@@ -69,7 +68,7 @@ margin_left = -247.0
 margin_top = 31.0
 margin_right = 247.0
 margin_bottom = 185.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "PAUSED."
 align = 1
 valign = 1
@@ -82,6 +81,8 @@ margin_left = -25.0
 margin_top = 1001.0
 margin_right = 196.0
 margin_bottom = 1195.0
+focus_mode = 0
+enabled_focus_mode = 0
 icon = ExtResource( 1 )
 flat = true
 __meta__ = {
@@ -89,3 +90,4 @@ __meta__ = {
 }
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]

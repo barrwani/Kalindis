@@ -13,3 +13,8 @@ func _on_Player_dead():
 
 func _process(delta):
 	EndGameScreen.score = str(counter) 
+	if counter > Game.highscore:
+		Game.highscore = counter
+	EndGameScreen.highscore = str(Game.highscore)
+	JellyofLegend.correctscene = true
+	Kalindis.gcorrectscene = false
