@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+var highscorereached = false
 var play = false
 var gameover = false
 var score = ""
@@ -7,7 +8,8 @@ var highscore = ""
 
 func set_visible(is_visible):
 	for node in get_children():
-		node.visible = is_visible
+		if ! node.is_in_group("sfx"):
+			node.visible = is_visible
 
 func _ready():
 	play = false
@@ -22,27 +24,37 @@ func _process(delta):
 			play = false
 			set_visible(true)
 			$Play.visible = false
-		$ColorRect/highscoretext.text = "SCORE GOAL"
-		$ColorRect/scorenumber.text = score
-		$ColorRect/highscorenumber.text = "10"
+			$AnimatedSprite.play("TutGoalReached")
+			$Highscoresfx.play()
+		else:
+			$AnimatedSprite.play("TutGoalNotReached")
+		$scorenumber.text = score
+		$highscorenumber.text = "10"
 
 func _on_Play_pressed():
 	get_tree().paused = false
+	$Click.play()
 	play = true
 	set_visible(false)
 
 func _on_game_over():
 	gameover = true
+	if highscorereached:
+		$Highscoresfx.play()
+		$AnimatedSprite.play("HighScore")
+	elif !highscorereached and ! get_tree().get_current_scene().get_name() == "TWorld":
+		$AnimatedSprite.play("Regular")
 	play = false
-	$ColorRect/scorenumber.text = score
+	$scorenumber.text = score
 	if ! get_tree().get_current_scene().get_name() == "TWorld":
-		$ColorRect/highscorenumber.text = highscore
+		$highscorenumber.text = highscore
 	set_visible(!get_tree().paused)
 	get_tree().paused = !get_tree().paused
 
 
 func _on_Menu_pressed():
 	get_tree().paused = false
+	$Click.play()
 	set_visible(false)
 	SceneChanger.change_scene("res://Scenes/Menu.tscn")
 

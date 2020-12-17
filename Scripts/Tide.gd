@@ -2,13 +2,14 @@ extends Area2D
 signal playerinwfall()
 var loops = 0.005
 var positionmult = 7
+
 func _on_Tide_body_entered(body):
 	if body.is_in_group("player"):
 		emit_signal("playerinwfall")
 
 func _on_Timer_timeout():
 	if fmod(loops, 10) == 0:
-		positionmult += 10
+		positionmult += 12
 		print("tidespeedup")
 	position.y -= positionmult
 	loops +=0.02
@@ -20,6 +21,7 @@ func _on_Area2D_body_entered(body):
 		$StartThreshold.queue_free()
 
 func _on_Moon_mooncollected():
+	$MoonPickedup.play()
 	$Timer.stop()
 	$Timer2.start()
 

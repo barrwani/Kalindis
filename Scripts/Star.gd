@@ -17,3 +17,6 @@ func _on_Star_body_entered(body):
 			self.connect("starcollected",get_node("/root/TWorld/Player"),"_on_Star_starcollected")
 			emit_signal("starcollected")
 			queue_free()
+
+func _ready():
+	$AnimatedSprite.play("default")

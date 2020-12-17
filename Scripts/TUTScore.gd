@@ -15,3 +15,4 @@ func _process(delta):
 	EndGameScreen.score = str(counter) 
 	JellyofLegend.correctscene = false
 	Kalindis.gcorrectscene = true
+	Kalindis.stream_paused = false

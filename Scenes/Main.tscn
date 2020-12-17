@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://backbar.png" type="Texture" id=1]
 [ext_resource path="res://UI/tide.png" type="Texture" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Scenes/Star.tscn" type="PackedScene" id=15]
 [ext_resource path="res://UI/analog_button.png" type="Texture" id=16]
 [ext_resource path="res://UI/world of water.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://UI/PauseButton.png" type="Texture" id=18]
+[ext_resource path="res://SFX/moon_pick_up.wav" type="AudioStream" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.7347, 3302.91 )
@@ -30,14 +32,10 @@ extents = Vector2( 298.675, 25.993 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2421.77, 412.011 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 32
-font_data = ExtResource( 17 )
-
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=5]
 radius = 40.0
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 64
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -128,6 +126,10 @@ texture = ExtResource( 1 )
 position = Vector2( 282.986, 1300 )
 script = ExtResource( 10 )
 
+[node name="MoonPickedup" type="AudioStreamPlayer" parent="Tide"]
+stream = ExtResource( 19 )
+volume_db = -10.0
+
 [node name="StartThreshold" type="Area2D" parent="Tide"]
 position = Vector2( 19.0538, -505.258 )
 
@@ -166,10 +168,9 @@ __meta__ = {
 [node name="Button" type="Button" parent="UI/Pause"]
 margin_left = 11.0
 margin_top = 1.0
-margin_right = 120.0
-margin_bottom = 52.0
-custom_fonts/font = SubResource( 5 )
-text = "PAUSE"
+margin_right = 95.0
+margin_bottom = 92.0
+icon = ExtResource( 18 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -197,7 +198,7 @@ texture = ExtResource( 4 )
 [node name="joystickbutton" type="TouchScreenButton" parent="UI/Joystick/joystick"]
 normal = ExtResource( 16 )
 pressed = ExtResource( 3 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 shape_visible = false
 script = ExtResource( 11 )
 
@@ -218,7 +219,7 @@ anchor_right = 0.5
 margin_left = -42.0
 margin_right = 42.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "0"
 align = 1
 valign = 1
@@ -241,16 +242,16 @@ position = Vector2( 328, -40 )
 "object",
 ] instance=ExtResource( 14 )]
 position = Vector2( 526, 461 )
-[connection signal="body_entered" from="DuplicateThresh" to="UI/Score" method="_on_DuplicateThresh_body_entered"]
-[connection signal="body_entered" from="DuplicateThresh" to="DuplicateThresh" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh" to="Player" method="_on_DuplicateThresh_body_entered"]
+[connection signal="body_entered" from="DuplicateThresh" to="DuplicateThresh" method="_on_DuplicateThresh_body_entered"]
+[connection signal="body_entered" from="DuplicateThresh" to="UI/Score" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh/LWall" to="DuplicateThresh/LWall" method="_on_LWaterfall_body_entered"]
 [connection signal="playerinwfall" from="DuplicateThresh/LWall" to="Player" method="_on_Waterfall_playerinwfall"]
 [connection signal="body_entered" from="DuplicateThresh/RWall" to="DuplicateThresh/RWall" method="_on_RWaterfall_body_entered"]
 [connection signal="playerinwfall" from="DuplicateThresh/RWall" to="Player" method="_on_Waterfall_playerinwfall"]
 [connection signal="dead" from="Player" to="UI/Pause" method="_on_Player_dead"]
-[connection signal="dead" from="Player" to="UI/Score" method="_on_Player_dead"]
 [connection signal="dead" from="Player" to="UI/Joystick" method="_on_Player_dead"]
+[connection signal="dead" from="Player" to="UI/Score" method="_on_Player_dead"]
 [connection signal="body_entered" from="Tide" to="Tide" method="_on_Tide_body_entered"]
 [connection signal="playerinwfall" from="Tide" to="Player" method="_on_Tide_playerinwfall"]
 [connection signal="body_entered" from="Tide/StartThreshold" to="Tide" method="_on_Area2D_body_entered"]

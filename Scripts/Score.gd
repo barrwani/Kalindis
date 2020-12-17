@@ -15,6 +15,8 @@ func _process(delta):
 	EndGameScreen.score = str(counter) 
 	if counter > Game.highscore:
 		Game.highscore = counter
+		EndGameScreen.highscorereached = true
 	EndGameScreen.highscore = str(Game.highscore)
 	JellyofLegend.correctscene = true
+	JellyofLegend.stream_paused = false
 	Kalindis.gcorrectscene = false

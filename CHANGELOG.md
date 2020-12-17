@@ -9,7 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -Visual Implementation
 
--UI Implementation
+-Item shop
+
+-Currency and rewards
+
+[0.1.0] -December 17, 2020 (Beta testing release)
+---
+***Added:**
+
+-All remaining UI components
+
+-All SFX
 
 
 [0.0.6] -December 14, 2020

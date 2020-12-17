@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Animations/Jellyfish-0/22.png" type="Texture" id=2]
@@ -34,6 +34,15 @@
 [ext_resource path="res://Animations/Jellyfish-0/18.png" type="Texture" id=32]
 [ext_resource path="res://Animations/Jellyfish-0/16.png" type="Texture" id=33]
 [ext_resource path="res://Animations/Jellyfish-0/19.png" type="Texture" id=34]
+[ext_resource path="res://SFX/sticky_wall.wav" type="AudioStream" id=35]
+[ext_resource path="res://SFX/tide_death.wav" type="AudioStream" id=36]
+[ext_resource path="res://SFX/wall_death.wav" type="AudioStream" id=37]
+[ext_resource path="res://SFX/jellyfish_jump_3.wav" type="AudioStream" id=38]
+[ext_resource path="res://SFX/star_pick_up.wav" type="AudioStream" id=39]
+[ext_resource path="res://SFX/jellyfish_jump_5.wav" type="AudioStream" id=40]
+[ext_resource path="res://SFX/jellyfish_jump_4.wav" type="AudioStream" id=41]
+[ext_resource path="res://SFX/jellyfish_jump_2.wav" type="AudioStream" id=42]
+[ext_resource path="res://SFX/jellyfish_jump.wav" type="AudioStream" id=43]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63.7368, 64.6452 )
@@ -98,6 +107,26 @@ begin_cap_mode = 1
 end_cap_mode = 2
 antialiased = true
 
+[node name="Playerjump1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+bus = "SFX"
+
+[node name="Playerjump2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 42 )
+bus = "SFX"
+
+[node name="Playerjump3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+bus = "SFX"
+
+[node name="Playerjump4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
+bus = "SFX"
+
+[node name="Playerjump5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 43 )
+bus = "SFX"
+
 [node name="State Machine" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
@@ -149,6 +178,26 @@ anims/Idle = SubResource( 5 )
 anims/PostJump = SubResource( 6 )
 
 [node name="Position2D" type="Position2D" parent="."]
+
+[node name="Waterfalldeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Stickywall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 35 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Tidedeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 36 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Star" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 39 )
+volume_db = -15.0
+bus = "SFX"
 [connection signal="dead" from="." to="Camera2D" method="_on_Player_dead"]
 [connection signal="jumping" from="." to="Camera2D" method="_on_Player_jumping"]
 [connection signal="timeout" from="Camera2D/ScreenShake/Frequency" to="Camera2D/ScreenShake" method="_on_Frequency_timeout"]

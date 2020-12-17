@@ -1,5 +1,8 @@
 extends "res://Scripts/StateMachine.gd"
 
+var playerjump = "Playerjump"
+
+
 func _ready():
 	add_state("idle")
 	add_state("jump")
@@ -49,6 +52,7 @@ func _enter_state(new_state, old_state):
 
 		states.jump:
 			$RichTextLabel.set_text("jump")
+
 
 		states.fall:
 			$RichTextLabel.set_text("fall")

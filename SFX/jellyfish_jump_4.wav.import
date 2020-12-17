@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jellyfish_jump_4.wav-870e970027bbce335e60a825b3c0354c.sample"
+
+[deps]
+
+source_file="res://SFX/jellyfish_jump_4.wav"
+dest_files=[ "res://.import/jellyfish_jump_4.wav-870e970027bbce335e60a825b3c0354c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

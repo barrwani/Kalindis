@@ -7,7 +7,9 @@ onready var joystick = get_parent().get_node("UI/Joystick/joystick/joystickbutto
 onready var line = $Line2D
 var velocity = Vector2()
 var jumping = false
+var rng = RandomNumberGenerator.new()
 var sticking = false
+var playerjump = "Playerjump"
 var holding = false
 var speed = -900
 var dead = false
@@ -56,6 +58,9 @@ func stick():
 func _on_joystickbutton_released():
 	sticking = false
 	if is_on_floor() or jumpvail and !dead:
+		playerjump += str(rng.randi_range(1,5))
+		get_node(playerjump).play()
+		playerjump = "Playerjump"
 		velocity = move_and_slide(joystick.get_value() * speed)
 		emit_signal("jumping")
 		jumpvail = false
@@ -65,6 +70,7 @@ func _on_joystickbutton_released():
 
 
 func _on_Waterfall_playerinwfall():
+	$Waterfalldeath.play()
 	velocity = Vector2(0,0)
 	emit_signal("dead")
 	dead = true
@@ -74,6 +80,7 @@ func _on_Waterfall_playerinwfall():
 func _on_Star_starcollected():
 	jumpvail = true
 	$AnimationPlayer.play("Idle")
+	$Star.play()
 
 
 func _on_DeathTimer_timeout():
@@ -81,6 +88,7 @@ func _on_DeathTimer_timeout():
 
 
 func _on_Tide_playerinwfall():
+	$Tidedeath.play()
 	velocity = Vector2(0,0)
 	emit_signal("dead")
 	dead = true
@@ -92,11 +100,14 @@ func _on_joystickbutton_pressed():
 
 
 func _on_StickyWall_playersticky():
+	$Stickywall.play()
 	stick()
 
 
 func _on_DuplicateThresh_body_entered(body):
 	duplicate += 1
 	if duplicate % 10 == 0:
-		speed -= 30
+		speed -= 20
 	
+func _ready():
+	rng.randomize()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://backbar.png" type="Texture" id=1]
 [ext_resource path="res://UI/tide.png" type="Texture" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://UI/analog_button.png" type="Texture" id=16]
 [ext_resource path="res://UI/world of water.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://Scripts/Tutorial Text.gd" type="Script" id=18]
+[ext_resource path="res://UI/PauseButton.png" type="Texture" id=19]
+[ext_resource path="res://SFX/moon_pick_up.wav" type="AudioStream" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.7347, 3302.91 )
@@ -35,21 +37,17 @@ extents = Vector2( 2421.77, 412.011 )
 size = 32
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 32
-font_data = ExtResource( 17 )
-
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 40.0
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 64
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 use_filter = true
 font_data = ExtResource( 17 )
@@ -159,6 +157,10 @@ texture = ExtResource( 2 )
 [node name="Timer2" type="Timer" parent="Tide"]
 wait_time = 0.4
 
+[node name="MoonPickedup" type="AudioStreamPlayer" parent="Tide"]
+stream = ExtResource( 20 )
+volume_db = -10.0
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Tutorial Text" type="Label" parent="UI"]
@@ -192,10 +194,9 @@ __meta__ = {
 [node name="Button" type="Button" parent="UI/Pause"]
 margin_left = 11.0
 margin_top = 1.0
-margin_right = 120.0
-margin_bottom = 52.0
-custom_fonts/font = SubResource( 6 )
-text = "PAUSE"
+margin_right = 95.0
+margin_bottom = 92.0
+icon = ExtResource( 19 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -227,7 +228,7 @@ texture = ExtResource( 4 )
 [node name="joystickbutton" type="TouchScreenButton" parent="UI/Joystick/joystick"]
 normal = ExtResource( 16 )
 pressed = ExtResource( 3 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 shape_visible = false
 script = ExtResource( 11 )
 
@@ -248,7 +249,7 @@ anchor_right = 0.5
 margin_left = -42.0
 margin_right = 42.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "0"
 align = 1
 valign = 1
@@ -281,7 +282,7 @@ margin_left = 179.0
 margin_top = 1197.0
 margin_right = 403.0
 margin_bottom = 1242.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "SKIP TUTORIAL"
 flat = true
@@ -289,8 +290,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="body_entered" from="DuplicateThresh" to="UI/Score" method="_on_DuplicateThresh_body_entered"]
-[connection signal="body_entered" from="DuplicateThresh" to="Player" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh" to="DuplicateThresh" method="_on_DuplicateThresh_body_entered"]
+[connection signal="body_entered" from="DuplicateThresh" to="Player" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh/LWall" to="DuplicateThresh/LWall" method="_on_LWaterfall_body_entered"]
 [connection signal="playerinwfall" from="DuplicateThresh/LWall" to="Player" method="_on_Waterfall_playerinwfall"]
 [connection signal="body_entered" from="DuplicateThresh/RWall" to="DuplicateThresh/RWall" method="_on_RWaterfall_body_entered"]
