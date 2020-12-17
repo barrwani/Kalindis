@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -Currency and rewards
 
+-Tweak SFX to match visual style
+
+-Advertisements and in app purchasing
+
 [0.1.0] -December 17, 2020 (Beta testing release)
 ---
 ***Added:**
