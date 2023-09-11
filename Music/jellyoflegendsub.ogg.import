@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jellyoflegendsub.ogg-8a9a11946a9f953cb69cb6904ba2298e.oggstr"
+
+[deps]
+
+source_file="res://Music/jellyoflegendsub.ogg"
+dest_files=[ "res://.import/jellyoflegendsub.ogg-8a9a11946a9f953cb69cb6904ba2298e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

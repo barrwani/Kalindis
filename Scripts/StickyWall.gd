@@ -17,3 +17,8 @@ func _on_StickyWall_body_entered(body):
 		if get_tree().get_current_scene().get_name() == "TWorld":
 			self.connect("playersticky",get_node("/root/TWorld/Player"),"_on_StickyWall_playersticky")
 			emit_signal("playersticky")
+
+func _ready():
+	if position.x == -230:
+		$Sticky_Wall_Back.set_flip_h(false)
+		$Sticky_Wall_Front.set_flip_h(false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/world of water.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/EndGameScreen.gd" type="Script" id=2]
@@ -8,17 +8,19 @@
 [ext_resource path="res://UI/DarkSoulsReached.png" type="Texture" id=6]
 [ext_resource path="res://SFX/button.wav" type="AudioStream" id=7]
 [ext_resource path="res://SFX/high_score.wav" type="AudioStream" id=8]
+[ext_resource path="res://UI/CURRENCY2.png" type="Texture" id=9]
+[ext_resource path="res://UI/kawha.png" type="Texture" id=10]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "HighScore",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "TutGoalReached",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "TutGoalNotReached",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -26,19 +28,19 @@ animations = [ {
 "name": "Regular",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "TutGoalNotReached",
+"name": "HighScore",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 80
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 size = 50
 use_filter = true
 font_data = ExtResource( 1 )
@@ -53,9 +55,9 @@ pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 300, 600 )
-frames = SubResource( 5 )
-animation = "HighScore"
+position = Vector2( 300, 599 )
+frames = SubResource( 1 )
+animation = "TutGoalReached"
 
 [node name="Play" type="Button" parent="."]
 anchor_left = 0.5
@@ -67,7 +69,9 @@ margin_top = 58.0
 margin_right = 342.0
 margin_bottom = 217.0
 rect_scale = Vector2( 0.638783, 0.66106 )
-custom_fonts/font = SubResource( 6 )
+focus_mode = 0
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,7 +86,7 @@ margin_left = -183.0
 margin_top = 69.0
 margin_right = 184.0
 margin_bottom = 133.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.568627, 0.529412, 0.905882, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "0"
@@ -117,6 +121,8 @@ margin_left = -295.6
 margin_top = -160.2
 margin_right = -185.6
 margin_bottom = -57.2
+focus_mode = 0
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -132,6 +138,32 @@ bus = "SFX"
 "sfx",
 ]]
 stream = ExtResource( 8 )
+volume_db = -8.069
 bus = "SFX"
+
+[node name="CURRENCYsp" type="Sprite" parent="."]
+position = Vector2( 301, 318 )
+texture = ExtResource( 9 )
+
+[node name="currency" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -313.0
+margin_right = 131.0
+margin_bottom = -252.0
+custom_fonts/font = SubResource( 4 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kawha" type="Sprite" parent="."]
+position = Vector2( 193, 318 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 10 )
+
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]

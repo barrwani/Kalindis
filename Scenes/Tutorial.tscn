@@ -1,10 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://backbar.png" type="Texture" id=1]
 [ext_resource path="res://UI/tide.png" type="Texture" id=2]
 [ext_resource path="res://UI/analog_button_pressed.png" type="Texture" id=3]
 [ext_resource path="res://UI/analog_base.png" type="Texture" id=4]
-[ext_resource path="res://UI/backg.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/BGDupl.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/TUTJoystick.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/TUTScore.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Waterfall.gd" type="Script" id=8]
@@ -20,129 +20,181 @@
 [ext_resource path="res://Scripts/Tutorial Text.gd" type="Script" id=18]
 [ext_resource path="res://UI/PauseButton.png" type="Texture" id=19]
 [ext_resource path="res://SFX/moon_pick_up.wav" type="AudioStream" id=20]
+[ext_resource path="res://Animations/Non-Animated Assets/MGDP.png" type="Texture" id=21]
+[ext_resource path="res://Animations/Non-Animated Assets/MG2.png" type="Texture" id=22]
+[ext_resource path="res://Animations/Non-Animated Assets/Floor.png" type="Texture" id=23]
+[ext_resource path="res://Animations/Non-Animated Assets/BG.png" type="Texture" id=24]
+[ext_resource path="res://Animations/Non-Animated Assets/Overlay.png" type="Texture" id=25]
+[ext_resource path="res://UI/KalindisBLANK.png" type="Texture" id=26]
+[ext_resource path="res://SFX/button.wav" type="AudioStream" id=27]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 33.7347, 3302.91 )
+extents = Vector2( 317, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 382.525, 16.4985 )
+extents = Vector2( 33.7347, 3302.91 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 298.675, 25.993 )
+extents = Vector2( 382.525, 16.4985 )
 
 [sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 298.675, 22 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 382.525, 16.4985 )
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 2421.77, 412.011 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 17 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=8]
 radius = 40.0
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 size = 64
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=8]
-size = 32
+[sub_resource type="DynamicFont" id=10]
+size = 64
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 17 )
 
 [node name="TWorld" type="Node2D"]
 
+[node name="MG2" type="Sprite" parent="."]
+position = Vector2( 313, 69 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 22 )
+
+[node name="BGDupl" type="Area2D" parent="."]
+position = Vector2( 313, -795 )
+script = ExtResource( 5 )
+
+[node name="MGDP" type="Sprite" parent="BGDupl"]
+visible = false
+position = Vector2( 0, 1693 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 21 )
+
+[node name="MGDP2" type="Sprite" parent="BGDupl"]
+position = Vector2( 0, -563.013 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 21 )
+
+[node name="MGDP3" type="Sprite" parent="BGDupl"]
+position = Vector2( 0, 568 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 21 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BGDupl"]
+visible = false
+position = Vector2( 1, 3 )
+shape = SubResource( 1 )
+
 [node name="DuplicateThresh" type="Area2D" parent="."]
 position = Vector2( 302.04, 172.759 )
 script = ExtResource( 12 )
-
-[node name="backg" type="Sprite" parent="DuplicateThresh"]
-position = Vector2( 23.96, 3968.24 )
-scale = Vector2( 1.08027, 11.2761 )
-texture = ExtResource( 5 )
 
 [node name="LWall" type="Area2D" parent="DuplicateThresh" groups=[
 "object",
 "water",
 ]]
-position = Vector2( -337.04, 500.241 )
+position = Vector2( -543.04, 498.241 )
+z_index = 2
 script = ExtResource( 8 )
 
 [node name="backbar2" type="Sprite" parent="DuplicateThresh/LWall"]
 modulate = Color( 0.152941, 0.141176, 0.141176, 1 )
-position = Vector2( -67, 3462 )
+position = Vector2( 143, 3504 )
 scale = Vector2( 0.0624502, 52.4889 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuplicateThresh/LWall"]
-shape = SubResource( 1 )
+visible = false
+position = Vector2( 220, 10 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="DuplicateThresh/LWall"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DuplicateThresh/LWall/StaticBody2D"]
-position = Vector2( -16, 3 )
-shape = SubResource( 1 )
+visible = false
+position = Vector2( 209, 2 )
+shape = SubResource( 2 )
 
 [node name="RWall" type="Area2D" parent="DuplicateThresh" groups=[
 "object",
 "water",
 ]]
-position = Vector2( 333.344, 502.67 )
+position = Vector2( 334.344, 502.67 )
+z_index = 2
 script = ExtResource( 8 )
 
 [node name="backbar3" type="Sprite" parent="DuplicateThresh/RWall"]
 modulate = Color( 0.192157, 0.180392, 0.180392, 1 )
-position = Vector2( 73.6333, 3469.57 )
-scale = Vector2( 0.0664512, 52.4303 )
+position = Vector2( 82.8576, 3486.57 )
+scale = Vector2( 0.062364, 52.4303 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuplicateThresh/RWall"]
-shape = SubResource( 1 )
+visible = false
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="DuplicateThresh/RWall"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DuplicateThresh/RWall/StaticBody2D"]
+visible = false
 position = Vector2( 18.616, -0.429016 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuplicateThresh"]
-shape = SubResource( 2 )
+visible = false
+position = Vector2( -31.04, -17.759 )
+shape = SubResource( 3 )
 
 [node name="Player" parent="." groups=[
 "player",
 ] instance=ExtResource( 13 )]
-position = Vector2( 294, 893 )
+position = Vector2( 302, 856 )
+z_index = 1
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 277.647, 989.116 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 23.5452, 1.68182 )
-shape = SubResource( 3 )
+[node name="Floor" type="Sprite" parent="Floor"]
+position = Vector2( 36.353, 70.884 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 23 )
 
-[node name="backbar" type="Sprite" parent="Floor"]
-modulate = Color( 0.447059, 0.0823529, 0, 1 )
-position = Vector2( 22.9213, 246.659 )
-scale = Vector2( 0.169332, 2.16735 )
-texture = ExtResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+visible = false
+position = Vector2( 25.353, -41.116 )
+shape = SubResource( 4 )
 
 [node name="Tide" type="Area2D" parent="."]
 position = Vector2( 282.986, 1300 )
+z_index = 5
 script = ExtResource( 10 )
 
 [node name="StartThreshold" type="Area2D" parent="Tide"]
-position = Vector2( 19.0538, -505.258 )
+position = Vector2( 14.014, -642 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tide/StartThreshold"]
-visible = false
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tide"]
 visible = false
 position = Vector2( 4.48975, 341.229 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="Tide"]
 wait_time = 0.005
@@ -155,11 +207,11 @@ scale = Vector2( 3.01517, 3.15366 )
 texture = ExtResource( 2 )
 
 [node name="Timer2" type="Timer" parent="Tide"]
-wait_time = 0.4
 
 [node name="MoonPickedup" type="AudioStreamPlayer" parent="Tide"]
 stream = ExtResource( 20 )
 volume_db = -10.0
+bus = "SFX"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -170,13 +222,17 @@ margin_left = 10.0
 margin_top = -534.0
 margin_right = 583.0
 margin_bottom = -495.0
-custom_fonts/font = SubResource( 5 )
-text = "Welcome to Kalindis "
+custom_fonts/font = SubResource( 7 )
+text = "Welcome to Kalindis!"
 align = 1
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Click" type="AudioStreamPlayer" parent="UI/Tutorial Text"]
+stream = ExtResource( 27 )
+bus = "SFX"
 
 [node name="Timer" type="Timer" parent="UI/Tutorial Text"]
 wait_time = 5.0
@@ -192,10 +248,13 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="UI/Pause"]
-margin_left = 11.0
-margin_top = 1.0
-margin_right = 95.0
-margin_bottom = 92.0
+margin_left = -1.0
+margin_top = -1.19209e-07
+margin_right = 83.0
+margin_bottom = 91.0
+rect_scale = Vector2( 1.3, 1.3 )
+focus_mode = 0
+enabled_focus_mode = 0
 icon = ExtResource( 19 )
 flat = true
 __meta__ = {
@@ -217,10 +276,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="UI/Joystick"]
-wait_time = 25.0
-autostart = true
-
 [node name="joystick" type="Sprite" parent="UI/Joystick"]
 position = Vector2( 0, -34 )
 texture = ExtResource( 4 )
@@ -228,7 +283,7 @@ texture = ExtResource( 4 )
 [node name="joystickbutton" type="TouchScreenButton" parent="UI/Joystick/joystick"]
 normal = ExtResource( 16 )
 pressed = ExtResource( 3 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 shape_visible = false
 script = ExtResource( 11 )
 
@@ -248,8 +303,8 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -42.0
 margin_right = 42.0
-margin_bottom = 73.0
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 9 )
 text = "0"
 align = 1
 valign = 1
@@ -273,41 +328,78 @@ position = Vector2( 328, -40 )
 ] instance=ExtResource( 14 )]
 position = Vector2( 526, 461 )
 
-[node name="SKIPbutton" type="Button" parent="."]
+[node name="KalindisBLANK" type="Sprite" parent="."]
+position = Vector2( 287, 1217 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 5
+texture = ExtResource( 26 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 134, 1144 )
+z_index = 6
+
+[node name="SKIPbutton" type="Button" parent="Node2D"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 179.0
-margin_top = 1197.0
-margin_right = 403.0
-margin_bottom = 1242.0
-custom_fonts/font = SubResource( 8 )
+margin_top = -93.0
+margin_right = 320.0
+margin_bottom = 188.0
+focus_mode = 0
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "SKIP TUTORIAL"
+enabled_focus_mode = 0
+text = "NEXT"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -50
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -613.0
+margin_right = -260.0
+margin_bottom = -573.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 313, 867 )
+texture = ExtResource( 25 )
+
+[node name="BG" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 294, 581 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 24 )
+
+[connection signal="body_entered" from="BGDupl" to="BGDupl" method="_on_BGDupl_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh" to="UI/Score" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh" to="DuplicateThresh" method="_on_DuplicateThresh_body_entered"]
-[connection signal="body_entered" from="DuplicateThresh" to="Player" method="_on_DuplicateThresh_body_entered"]
 [connection signal="body_entered" from="DuplicateThresh/LWall" to="DuplicateThresh/LWall" method="_on_LWaterfall_body_entered"]
 [connection signal="playerinwfall" from="DuplicateThresh/LWall" to="Player" method="_on_Waterfall_playerinwfall"]
 [connection signal="body_entered" from="DuplicateThresh/RWall" to="DuplicateThresh/RWall" method="_on_RWaterfall_body_entered"]
 [connection signal="playerinwfall" from="DuplicateThresh/RWall" to="Player" method="_on_Waterfall_playerinwfall"]
+[connection signal="dead" from="Player" to="UI/Score" method="_on_Player_dead"]
 [connection signal="dead" from="Player" to="UI/Pause" method="_on_Player_dead"]
 [connection signal="dead" from="Player" to="UI/Joystick" method="_on_Player_dead"]
-[connection signal="dead" from="Player" to="UI/Score" method="_on_Player_dead"]
+[connection signal="jumping" from="Player" to="UI/Tutorial Text" method="_on_Player_jumping"]
 [connection signal="body_entered" from="Tide" to="Tide" method="_on_Tide_body_entered"]
 [connection signal="playerinwfall" from="Tide" to="Player" method="_on_Tide_playerinwfall"]
 [connection signal="body_entered" from="Tide/StartThreshold" to="Tide" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Tide/Timer" to="Tide" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Tide/Timer2" to="Tide" method="_on_Timer2_timeout"]
+[connection signal="tutfinish" from="UI/Tutorial Text" to="UI/Joystick" method="_on_Tutorial_Text_tutfinish"]
 [connection signal="timeout" from="UI/Tutorial Text/Timer" to="UI/Tutorial Text" method="_on_Timer_timeout"]
 [connection signal="pressed" from="UI/Pause/Button" to="UI/Pause" method="_on_Button_pressed"]
-[connection signal="timeout" from="UI/Joystick/Timer" to="UI/Joystick" method="_on_Timer_timeout"]
 [connection signal="pressed" from="UI/Joystick/joystick/joystickbutton" to="Player" method="_on_joystickbutton_pressed"]
 [connection signal="released" from="UI/Joystick/joystick/joystickbutton" to="Player" method="_on_joystickbutton_released"]
-[connection signal="pressed" from="SKIPbutton" to="UI/Joystick" method="_on_SKIPbutton_pressed"]
-[connection signal="pressed" from="SKIPbutton" to="UI/Tutorial Text" method="_on_SKIPbutton_pressed"]
+[connection signal="pressed" from="Node2D/SKIPbutton" to="UI/Tutorial Text" method="_on_SKIPbutton_pressed"]

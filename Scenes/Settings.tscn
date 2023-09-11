@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Slider.gd" type="Script" id=1]
 [ext_resource path="res://UI/settingsmenu.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Settings.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/MusSlider.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/SFSlider.gd" type="Script" id=5]
+[ext_resource path="res://SFX/button.wav" type="AudioStream" id=6]
 
 [sub_resource type="StyleBoxLine" id=1]
 thickness = 6
@@ -66,6 +69,7 @@ margin_left = -247.0
 margin_top = 8.0
 margin_right = 220.0
 margin_bottom = 24.0
+focus_mode = 0
 custom_styles/slider = SubResource( 1 )
 custom_styles/grabber_area_highlight = SubResource( 2 )
 custom_styles/grabber_area = SubResource( 3 )
@@ -85,16 +89,16 @@ margin_left = -247.0
 margin_top = 72.0001
 margin_right = 220.0
 margin_bottom = 88.0001
+focus_mode = 0
 custom_styles/slider = SubResource( 4 )
 custom_styles/grabber_area_highlight = SubResource( 5 )
 custom_styles/grabber_area = SubResource( 6 )
 max_value = 1.0
 step = 0.05
-script = ExtResource( 1 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-audio_bus_name = "SFX"
 
 [node name="MusicVOL" type="HSlider" parent="."]
 anchor_left = 0.5
@@ -105,16 +109,16 @@ margin_left = -247.0
 margin_top = 139.0
 margin_right = 220.0
 margin_bottom = 155.0
+focus_mode = 0
 custom_styles/slider = SubResource( 7 )
 custom_styles/grabber_area_highlight = SubResource( 8 )
 custom_styles/grabber_area = SubResource( 9 )
 max_value = 1.0
 step = 0.05
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-audio_bus_name = "Music"
 
 [node name="BACK" type="Button" parent="."]
 margin_left = 22.0
@@ -127,6 +131,13 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Click" type="AudioStreamPlayer" parent="." groups=[
+"sfx",
+]]
+stream = ExtResource( 6 )
+bus = "SFX"
+
 [connection signal="mouse_exited" from="MasterVOL" to="MasterVOL" method="release_focus"]
 [connection signal="value_changed" from="MasterVOL" to="MasterVOL" method="_on_value_changed"]
 [connection signal="mouse_exited" from="SFXVOL" to="SFXVOL" method="release_focus"]

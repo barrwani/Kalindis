@@ -12,13 +12,9 @@ func _ready():
 	$joystick/joystickbutton.set_deferred("visible", false)
 
 
-func _on_Timer_timeout():
-	if ! dead:
-		$joystick.set_deferred("visible",true)
-		$joystick/joystickbutton.set_deferred("visible", true)
 
 
-func _on_SKIPbutton_pressed():
+
+func _on_Tutorial_Text_tutfinish():
 	$joystick.set_deferred("visible",true)
 	$joystick/joystickbutton.set_deferred("visible", true)
-	

@@ -33,7 +33,9 @@ margin_left = -82.0
 margin_top = -99.0
 margin_right = 79.0
 margin_bottom = -15.0
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,7 +50,9 @@ margin_left = -209.0
 margin_top = 2.0
 margin_right = 202.0
 margin_bottom = 86.0
+focus_mode = 0
 custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false

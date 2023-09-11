@@ -49,14 +49,10 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			$RichTextLabel.set_text("idle")
 			$AnimatedSprite.play("Idle")
-
 		states.jump:
 			$RichTextLabel.set_text("jump")
-
-
 		states.fall:
 			$RichTextLabel.set_text("fall")
-
 		states.dead:
 			$RichTextLabel.set_text("dead")
 

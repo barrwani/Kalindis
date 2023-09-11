@@ -9,7 +9,6 @@ func _on_Moon_body_entered(body):
 			self.connect("mooncollected",get_node("/root/World/Tide"),"_on_Moon_mooncollected")
 			emit_signal("mooncollected")
 			queue_free()
-
 		elif get_tree().get_current_scene().get_name() == "GWorld":
 			self.connect("mooncollected",get_node("/root/GWorld/Tide"),"_on_Moon_mooncollected")
 			emit_signal("mooncollected")
@@ -18,3 +17,9 @@ func _on_Moon_body_entered(body):
 			self.connect("mooncollected",get_node("/root/TWorld/Tide"),"_on_Moon_mooncollected")
 			emit_signal("mooncollected")
 			queue_free()
+		$AnimatedSprite.play("collected")
+		AudioServer.set_bus_effect_enabled(1,0, true)
+		
+func _ready():
+	$AnimatedSprite.play("default")
+

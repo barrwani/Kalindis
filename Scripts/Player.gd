@@ -16,7 +16,7 @@ var dead = false
 var duplicate = 0
 var gravity = 800
 var jumpvail = true
-var max_points = 150
+var max_points = 75
 
 func update_trajectory(delta):
 	line.clear_points()
@@ -60,6 +60,7 @@ func _on_joystickbutton_released():
 	if is_on_floor() or jumpvail and !dead:
 		playerjump += str(rng.randi_range(1,5))
 		get_node(playerjump).play()
+		$Bubbles.set_emitting(true)
 		playerjump = "Playerjump"
 		velocity = move_and_slide(joystick.get_value() * speed)
 		emit_signal("jumping")

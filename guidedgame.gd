@@ -23,4 +23,6 @@ func save_highscore():
 
 func set_highscore(new_value):
 	highscore = new_value
+	SilentWolf.Scores.persist_score(Global.player_name, highscore, "Guided")
+	print("newval")
 	save_highscore()

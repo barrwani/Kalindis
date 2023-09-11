@@ -7,4 +7,5 @@ func _process(delta):
 		play(20)
 		stream_paused = false
 	elif !correctscene:
+		stop()
 		stream_paused = true

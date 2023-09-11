@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Animations/Jellyfish-0/22.png" type="Texture" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://SFX/jellyfish_jump_4.wav" type="AudioStream" id=41]
 [ext_resource path="res://SFX/jellyfish_jump_2.wav" type="AudioStream" id=42]
 [ext_resource path="res://SFX/jellyfish_jump.wav" type="AudioStream" id=43]
+[ext_resource path="res://Scenes/Bubbles.tscn" type="PackedScene" id=44]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63.7368, 64.6452 )
@@ -98,12 +99,13 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 3.36365, -6.72717 )
-width = 15.0
+width = 20.0
 default_color = Color( 0.4, 0.501961, 1, 1 )
 gradient = SubResource( 2 )
 joint_mode = 2
-begin_cap_mode = 1
+begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
@@ -131,6 +133,7 @@ bus = "SFX"
 script = ExtResource( 3 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="State Machine"]
+visible = false
 margin_left = -25.5147
 margin_top = -118.0
 margin_right = 44.4853
@@ -198,6 +201,13 @@ bus = "SFX"
 stream = ExtResource( 39 )
 volume_db = -15.0
 bus = "SFX"
+
+[node name="Bubbles" parent="." instance=ExtResource( 44 )]
+position = Vector2( 0, -1 )
+lifetime = 0.5
+speed_scale = 0.4
+explosiveness = 0.34
+
 [connection signal="dead" from="." to="Camera2D" method="_on_Player_dead"]
 [connection signal="jumping" from="." to="Camera2D" method="_on_Player_jumping"]
 [connection signal="timeout" from="Camera2D/ScreenShake/Frequency" to="Camera2D/ScreenShake" method="_on_Frequency_timeout"]

@@ -21,8 +21,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Kandil"
-run/main_scene="res://Scenes/Menu.tscn"
-boot_splash/image="res://Animations/Jellyfish-0/19.png"
+run/main_scene="res://Scenes/Nahar.tscn"
+boot_splash/image="res://Splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://Animations/Jellyfish-0/19.png"
 
@@ -36,6 +36,15 @@ JellyofLegend="*res://Scenes/JellyofLegend.tscn"
 Kalindis="*res://Scenes/Kalindis.tscn"
 Settings="*res://Scenes/Settings.tscn"
 SceneChanger="*res://Scenes/SceneChanger.tscn"
+Currency="*res://Currency.gd"
+GlobalUi="*res://GlobalUI.gd"
+IAP="*res://Scenes/IAP.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+Global="*res://Scripts/global.gd"
+
+[debug]
+
+settings/fps/force_fps=60
 
 [display]
 
@@ -48,6 +57,10 @@ window/stretch/aspect="keep"
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[network]
+
+limits/debugger_stdout/max_chars_per_second=4096
 
 [rendering]
 
