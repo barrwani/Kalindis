@@ -1,7 +1,9 @@
-### Description
+### Kalindis
 ---
 
-Developed by Nahar Entertainment. In Kalindis, you play as a cheerful jellyfish which is trying to escape the endless darkness which is catching up to it. You have access to one jump every time you hit the floor, and can refill it middair by collecting a star. You also have a freeze-meter which allows you to stay in place for a couple seconds to time/calculate your jump. Collecting moons reset this meter. Collecting comets (currency) will allow you to purchase skins which change the appearance of the jellyfish. 
+Developed by Nahar Studios. 
+
+In Kalindis, you play as a cheerful jellyfish which is trying to escape the endless darkness which is catching up to it. You have access to one jump every time you hit the floor, and can refill it middair by collecting a star. You also have a freeze-meter which allows you to stay in place for a couple seconds to time/calculate your jump. Collecting moons reset this meter. Collecting comets (currency) will allow you to purchase skins which change the appearance of the jellyfish. 
 
 
 ### Versions
@@ -25,7 +27,6 @@ Developed by Nahar Entertainment. In Kalindis, you play as a cheerful jellyfish 
 
 -Version [0.0.2] - Sept 22, 2020
 
-For detailed information on changes between versions please read the [Changelog](CHANGELOG.md)
 
 
 
@@ -34,4 +35,3 @@ For detailed information on changes between versions please read the [Changelog]
 
 Copyright (C) Nahar Studios (Formerly Nahar Entertainment)
 
-Licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE.md).
